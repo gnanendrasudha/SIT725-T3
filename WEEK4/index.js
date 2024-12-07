@@ -5,7 +5,7 @@ const connectToDatabase = require('./database'); // Import the database connecti
 const app = express();
  
 // Define the port for the server
-const PORT = process.env.PORT || 6800;
+const PORT = process.env.PORT || 5200;
  
 // Middleware to parse JSON requests
 app.use(express.json());
