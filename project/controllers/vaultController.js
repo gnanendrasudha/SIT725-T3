@@ -31,6 +31,7 @@ class VaultController {
 // Export the VaultController to be used in app.js
 module.exports = VaultController;
 
+// controllers/vaultController.js
 
 function calculateStrength(value1, value2) {
     if (value1 < 0 || value2 < 0) {
@@ -38,4 +39,12 @@ function calculateStrength(value1, value2) {
     }
     return value1 + value2;
 }
+
+module.exports = {
+    calculateStrength
+};
+
+
+
+
 
