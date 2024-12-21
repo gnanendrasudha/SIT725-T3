@@ -40,9 +40,12 @@ function calculateStrength(value1, value2) {
     return value1 + value2;
 }
 
+// Export the function
 module.exports = {
     calculateStrength
 };
+
+
 
 
 
