@@ -1,22 +1,26 @@
-// Import the required modules
 const express = require('express');
-const path = require('path');
-
-// Initialize Express application
 const app = express();
+const VaultController = require('./controllers/vaultController');
 
-// Set the port
-const PORT = process.env.PORT || 4000;
+const vaultController = new VaultController();
 
-// Serve static files (HTML, CSS, JS) from the 'public' folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(express.static('public'));
 
-// Route to serve the main page (index.html)
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.post('/add-entry', (req, res) => {
+    try {
+        const { entry } = req.body;
+        const entries = vaultController.addEntry(entry);
+        res.status(200).json({ success: true, entries });
+    } catch (error) {
+        res.status(400).json({ success: false, message: error.message });
+    }
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.get('/entries', (req, res) => {
+    res.json(vaultController.getEntries());
+});
+
+app.listen(4000, () => {
+    console.log('Server is running on http://localhost:7000');
 });
