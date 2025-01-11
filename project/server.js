@@ -21,6 +21,6 @@ app.get('/entries', (req, res) => {
     res.json(vaultController.getEntries());
 });
 
-app.listen(4000, () => {
+app.listen(7000, () => {
     console.log('Server is running on http://localhost:7000');
 });

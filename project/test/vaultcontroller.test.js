@@ -1,4 +1,4 @@
-const VaultController = require('../controllers/vaultControllers');
+const VaultController = require('../controllers/vaultController');
 
 describe('VaultController Tests', () => {
     let vaultController;
