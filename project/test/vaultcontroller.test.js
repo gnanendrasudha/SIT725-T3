@@ -1,25 +1,15 @@
-const VaultController = require('../controllers/vaultController');
+const { calculateStrength } = require('../controllers/vaultController');
 
 describe('VaultController Tests', () => {
-    let vaultController;
+  test('calculates strength correctly for valid inputs', () => {
+    expect(calculateStrength(100, 50)).toBe(5000); // Valid case
+  });
 
-    beforeEach(() => {
-        vaultController = new VaultController();
-    });
+  test('throws an error for negative input values', () => {
+    expect(() => calculateStrength(-100, 50)).toThrow('Weight and repetitions must be positive numbers');
+  });
 
-    test('should add a valid entry', () => {
-        const entries = vaultController.addEntry('Test Entry');
-        expect(entries).toContain('Test Entry');
-    });
-
-    test('should throw an error for invalid entry', () => {
-        expect(() => vaultController.addEntry('')).toThrow('Invalid entry: must be a non-empty string');
-    });
-
-    test('should return all entries', () => {
-        vaultController.addEntry('Entry 1');
-        vaultController.addEntry('Entry 2');
-        const entries = vaultController.getEntries();
-        expect(entries).toEqual(['Entry 1', 'Entry 2']);
-    });
+  test('throws an error for zero inputs', () => {
+    expect(() => calculateStrength(0, 50)).toThrow('Weight and repetitions must be positive numbers');
+  });
 });

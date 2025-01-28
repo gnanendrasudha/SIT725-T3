@@ -1,19 +1,9 @@
-class VaultController {
-    constructor() {
-        this.entries = [];
+function calculateStrength(weight, repetitions) {
+    if (weight <= 0 || repetitions <= 0) {
+      throw new Error('Weight and repetitions must be positive numbers');
     }
-
-    addEntry(entry) {
-        if (!entry || typeof entry !== 'string') {
-            throw new Error('Invalid entry: must be a non-empty string');
-        }
-        this.entries.push(entry);
-        return this.entries;
-    }
-
-    getEntries() {
-        return this.entries;
-    }
-}
-
-module.exports = VaultController;
+    return weight * repetitions;
+  }
+  
+  module.exports = { calculateStrength };
+  

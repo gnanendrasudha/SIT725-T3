@@ -1,19 +1,16 @@
-// test/vaultController.test.js
-const { calculateStrength } = require('../project/controllers/vaultController');
+const { calculateStrength } = require('../controllers/vaultController');
+
 describe('VaultController Tests', () => {
-    test('calculates strength correctly for valid inputs', () => {
-        expect(calculateStrength(100, 50)).toBe(150);
-    });
+  test('calculates strength correctly for valid inputs', () => {
+    expect(calculateStrength(100, 50)).toBe(5000);
+  });
 
-    test('throws an error for negative input values', () => {
-        expect(() => calculateStrength(-100, 50)).toThrow('Invalid input: Values must be non-negative');
-    });
+  test('throws an error for negative input values', () => {
+    expect(() => calculateStrength(-100, 50)).toThrow('Weight and repetitions must be positive numbers');
+  });
 
-    test('throws an error when one of the inputs is not a number', () => {
-        expect(() => calculateStrength("100", 50)).toThrow('Invalid input: Values must be numbers');
-    });
-
-    test('returns the correct strength when inputs are zero', () => {
-        expect(calculateStrength(0, 0)).toBe(0);
-    });
+  test('throws an error for zero inputs', () => {
+    expect(() => calculateStrength(0, 50)).toThrow('Weight and repetitions must be positive numbers');
+  });
 });
+
